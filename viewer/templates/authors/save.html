@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="form-group">
+      {{ form.firstName.errors }}
+      <label for="{{ form.firstName.id_for_label }}">First Name:</label>
+      {{ form.firstName }}
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          {{ form.lastName.errors }}
+          <label for="{{ form.lastName.id_for_label }}">Last Name:</label>
+          {{ form.lastName }}
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          {{ form.email.errors }}
+          <label for="{{ form.email.id_for_label }}">Rating:</label>
+          {{ form.email }}
+        </div>
+      </div>
+    </div>
+    <input type="submit" value="Submit" class="btn btn-primary">
+  </form>
+{% endblock %}

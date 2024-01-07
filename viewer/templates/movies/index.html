@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+     <div class="row">
+        <div class="col-10">
+            <h1>Welcome to HollyMovies!</h1>
+        </div>
+        <div class="col-2">
+            <a class="btn btn-primary" href="/viewer/movies/create" role="button">Create Movie</a>
+        </div>
+    </div>
+    {% for movie in object_list %}
+        <div class="row border p-3 mb-3 rounded border-dark">
+            <div class="col-8">
+                <h4>{{ movie.title }} ({{ movie.released.year }}) - {{ movie.genre.name }}</h4>
+                <p>{{ movie.description }}</p>
+            </div>
+            <div class="col-4">
+                <a class="btn btn-warning" href="/viewer/movies/{{ movie.id }}/edit" role="button">Edit</a>
+                <a class="btn btn-danger" href="/viewer/movies/{{ movie.id }}/delete" role="button">Delete</a>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
